@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      list: [2, 3, 4]
+    }
+  }
+  static clickMe() {
+    alert('点我')
+  }
+  render() {
+    return(
+      <div>
+        <button onClick={App.clickMe.bind(this)}>点我</button>
+        <ul>
+          {
+            this.state.list.map(item => {
+              return <li>{item}</li>
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
 }
-
-export default App;
